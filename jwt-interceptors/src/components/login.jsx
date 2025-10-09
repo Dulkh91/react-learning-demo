@@ -30,6 +30,10 @@ const LoginPage = () => {
                 <Button variant='contained' onClick={()=>navigate("/create-user")}>Create User</Button>
             </div>
         </form>
+
+        <hr />
+        <p>email: john@mail.com</p>
+        <p>password: changeme</p>
     </div> );
 }
  

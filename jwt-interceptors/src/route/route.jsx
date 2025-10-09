@@ -3,6 +3,7 @@ import LoginPage from "../components/login";
 import Layout from "../layout/layout";
 import ProfilePage from "../components/profile";
 import CreateUser from "../components/createUser";
+import ProductPage from "../page/product";
 
  const router = createBrowserRouter([
         {path: '/', 
@@ -19,7 +20,8 @@ import CreateUser from "../components/createUser";
         path: '/',
         element: <Layout/>,
         children:[
-            {index: true, element: <ProfilePage/>}
+            {index: true, element: <ProfilePage/>},
+            {path:"product", element: <ProductPage/>}
         ]
     }
  ])

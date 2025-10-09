@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { API_BASE_URL } from "./api";
+import { ValidateResponse } from "../utils/validateResponse";
 
 const api = axios.create({
     baseURL:API_BASE_URL
@@ -35,7 +36,7 @@ export const AuthService = {
   getCurrentUser: async () => {
     try {
       const response = await api.get('/auth/profile');
-      return response.data;
+      return ValidateResponse(response)
     } catch (error) {
       throw error.response?.data || error.message;
     }
@@ -63,7 +64,18 @@ export const AuthService = {
   // Check if user is authenticated
   isAuthenticated: ()=>{
     return !!Cookies.get('token')
+  },
+
+  productList: async()=>{
+    try {
+        const res = await api.get('/products')
+        return ValidateResponse(res)
+    } catch (error) {
+      throw error.data.response.data || error.message
+    }
   }
+
+
 }
  
 
